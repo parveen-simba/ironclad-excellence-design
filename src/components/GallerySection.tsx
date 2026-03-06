@@ -1,13 +1,19 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import galleryCnc from "@/assets/gallery-cnc.jpg";
+import galleryDoors from "@/assets/gallery-doors.jpg";
+import galleryFrames from "@/assets/gallery-frames.jpg";
+import galleryWorkshop from "@/assets/gallery-workshop.jpg";
+import galleryCustomDoor from "@/assets/gallery-custom-door.jpg";
+import galleryFinished from "@/assets/gallery-finished.jpg";
 
 const galleryItems = [
-  { title: "Iron Sheet Door", category: "Doors" },
-  { title: "CNC Machine at Work", category: "Manufacturing" },
-  { title: "Window Frame", category: "Frames" },
-  { title: "Workshop Overview", category: "Facility" },
-  { title: "Custom Door Design", category: "Doors" },
-  { title: "Finished Products", category: "Products" },
+  { title: "Iron Sheet Door", category: "Doors", image: galleryDoors },
+  { title: "CNC Machine at Work", category: "Manufacturing", image: galleryCnc },
+  { title: "Window Frames", category: "Frames", image: galleryFrames },
+  { title: "Workshop Overview", category: "Facility", image: galleryWorkshop },
+  { title: "Custom Door Design", category: "Doors", image: galleryCustomDoor },
+  { title: "Finished Products", category: "Products", image: galleryFinished },
 ];
 
 const GallerySection = () => {
@@ -39,24 +45,19 @@ const GallerySection = () => {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.4, delay: i * 0.08 }}
-              className="group relative aspect-square bg-card border border-border rounded-lg overflow-hidden cursor-pointer"
+              className="group relative aspect-square rounded-lg overflow-hidden cursor-pointer"
             >
-              {/* Placeholder industrial pattern */}
-              <div className="absolute inset-0 bg-gradient-to-br from-secondary to-muted flex items-center justify-center">
-                <div className="text-center p-4">
-                  <div className="w-12 h-12 mx-auto mb-3 rounded bg-primary/10 flex items-center justify-center">
-                    <span className="font-heading text-primary text-lg font-bold">{item.title.charAt(0)}</span>
-                  </div>
-                  <p className="font-heading text-sm text-foreground">{item.title}</p>
-                  <p className="text-xs text-muted-foreground mt-1">{item.category}</p>
-                </div>
-              </div>
-
+              <img
+                src={item.image}
+                alt={item.title}
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
               {/* Hover overlay */}
-              <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/20 transition-colors duration-300 flex items-center justify-center">
-                <span className="opacity-0 group-hover:opacity-100 transition-opacity font-heading text-primary-foreground text-sm bg-primary/80 px-4 py-2 rounded">
-                  View
-                </span>
+              <div className="absolute inset-0 bg-background/0 group-hover:bg-background/60 transition-colors duration-300 flex items-end justify-start p-4">
+                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <p className="font-heading text-sm text-foreground font-semibold">{item.title}</p>
+                  <p className="text-xs text-muted-foreground">{item.category}</p>
+                </div>
               </div>
             </motion.div>
           ))}
