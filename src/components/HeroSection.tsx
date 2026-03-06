@@ -1,15 +1,15 @@
 import { motion } from "framer-motion";
 import { Shield, Award, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import heroBg from "@/assets/hero-bg.jpg";
 
 const HeroSection = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 35px, hsl(var(--foreground)) 35px, hsl(var(--foreground)) 36px)`,
-        }} />
+      {/* Background image */}
+      <div className="absolute inset-0">
+        <img src={heroBg} alt="CNC machine cutting iron sheets" className="w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-background/80" />
       </div>
 
       {/* Orange glow */}

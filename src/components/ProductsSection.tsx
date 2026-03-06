@@ -1,25 +1,28 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { DoorOpen, LayoutGrid, Wrench, CheckCircle } from "lucide-react";
+import { CheckCircle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import productDoor from "@/assets/product-door.jpg";
+import productWindow from "@/assets/product-window.jpg";
+import productFabrication from "@/assets/product-fabrication.jpg";
 
 const products = [
   {
-    icon: DoorOpen,
+    image: productDoor,
     title: "Iron Sheet Doors",
     description: "Heavy-duty rust-proof GP base iron sheet doors manufactured with CNC precision. Built for security and longevity.",
     features: ["100% Rust Proof", "CNC Cut Precision", "Imported Iron Sheets", "Custom Sizes"],
     badge: "Best Seller",
   },
   {
-    icon: LayoutGrid,
+    image: productWindow,
     title: "Window Frames",
     description: "Durable rust-proof window frames crafted from premium GP base material. Designed for perfect fit and lasting strength.",
     features: ["GP Base Material", "Weather Resistant", "Perfect Finish", "Custom Designs"],
     badge: "Popular",
   },
   {
-    icon: Wrench,
+    image: productFabrication,
     title: "Custom Fabrication",
     description: "Bespoke iron fabrication services for specialized requirements. From design to delivery, precision at every step.",
     features: ["Made to Order", "Design Consultation", "Quality Assured", "Timely Delivery"],
@@ -59,10 +62,13 @@ const ProductsSection = () => {
               transition={{ duration: 0.5, delay: i * 0.15 }}
               className="group bg-card border border-border rounded-lg overflow-hidden hover:border-primary/50 transition-all duration-300"
             >
-              {/* Product visual */}
-              <div className="relative h-48 bg-secondary flex items-center justify-center overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent" />
-                <product.icon className="w-20 h-20 text-primary/60 group-hover:scale-110 transition-transform duration-300" />
+              <div className="relative h-48 overflow-hidden">
+                <img
+                  src={product.image}
+                  alt={product.title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-card/60 to-transparent" />
                 <div className="absolute top-3 right-3">
                   <Badge className="bg-primary text-primary-foreground font-heading text-xs">{product.badge}</Badge>
                 </div>
