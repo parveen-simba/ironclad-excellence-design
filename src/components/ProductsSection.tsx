@@ -32,7 +32,7 @@ const products = [
 
 const ProductsSection = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   return (
     <section id="products" className="section-padding" ref={ref}>
@@ -41,19 +41,19 @@ const ProductsSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-16"
         >
-          <p className="text-primary font-heading text-sm tracking-[0.2em] uppercase mb-3">Our Products</p>
-          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+          <p className="text-primary font-heading text-xs sm:text-sm tracking-[0.2em] uppercase mb-2 sm:mb-3">Our Products</p>
+          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4">
             Premium Iron <span className="text-gradient">Products</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto px-2">
             All products are custom-manufactured using imported GP base iron sheets and automatic CNC machines
             for unmatched quality and durability.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
           {products.map((product, i) => (
             <motion.div
               key={product.title}
@@ -62,25 +62,26 @@ const ProductsSection = () => {
               transition={{ duration: 0.5, delay: i * 0.15 }}
               className="group bg-card border border-border rounded-lg overflow-hidden hover:border-primary/50 transition-all duration-300"
             >
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-40 sm:h-48 overflow-hidden">
                 <img
                   src={product.image}
                   alt={product.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-card/60 to-transparent" />
-                <div className="absolute top-3 right-3">
-                  <Badge className="bg-primary text-primary-foreground font-heading text-xs">{product.badge}</Badge>
+                <div className="absolute top-2.5 right-2.5 sm:top-3 sm:right-3">
+                  <Badge className="bg-primary text-primary-foreground font-heading text-[10px] sm:text-xs">{product.badge}</Badge>
                 </div>
               </div>
 
-              <div className="p-6">
-                <h3 className="font-heading text-xl font-semibold mb-3">{product.title}</h3>
-                <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{product.description}</p>
-                <div className="space-y-2">
+              <div className="p-4 sm:p-6">
+                <h3 className="font-heading text-lg sm:text-xl font-semibold mb-2 sm:mb-3">{product.title}</h3>
+                <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4 leading-relaxed">{product.description}</p>
+                <div className="space-y-1.5 sm:space-y-2">
                   {product.features.map((f) => (
-                    <div key={f} className="flex items-center gap-2 text-sm">
-                      <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
+                    <div key={f} className="flex items-center gap-2 text-xs sm:text-sm">
+                      <CheckCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary flex-shrink-0" />
                       <span className="text-muted-foreground">{f}</span>
                     </div>
                   ))}
