@@ -18,7 +18,7 @@ const galleryItems = [
 
 const GallerySection = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   return (
     <section id="gallery" className="section-padding bg-secondary/50" ref={ref}>
@@ -27,18 +27,18 @@ const GallerySection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-16"
         >
-          <p className="text-primary font-heading text-sm tracking-[0.2em] uppercase mb-3">Gallery</p>
-          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+          <p className="text-primary font-heading text-xs sm:text-sm tracking-[0.2em] uppercase mb-2 sm:mb-3">Gallery</p>
+          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4">
             Our <span className="text-gradient">Work</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto px-2">
             A glimpse of our manufacturing facility, products, and craftsmanship.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-2.5 sm:gap-4">
           {galleryItems.map((item, i) => (
             <motion.div
               key={item.title}
@@ -51,12 +51,13 @@ const GallerySection = () => {
                 src={item.image}
                 alt={item.title}
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                loading="lazy"
               />
               {/* Hover overlay */}
-              <div className="absolute inset-0 bg-background/0 group-hover:bg-background/60 transition-colors duration-300 flex items-end justify-start p-4">
+              <div className="absolute inset-0 bg-background/0 group-hover:bg-background/60 transition-colors duration-300 flex items-end justify-start p-3 sm:p-4">
                 <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <p className="font-heading text-sm text-foreground font-semibold">{item.title}</p>
-                  <p className="text-xs text-muted-foreground">{item.category}</p>
+                  <p className="font-heading text-xs sm:text-sm text-foreground font-semibold">{item.title}</p>
+                  <p className="text-[10px] sm:text-xs text-muted-foreground">{item.category}</p>
                 </div>
               </div>
             </motion.div>
