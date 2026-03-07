@@ -1,24 +1,44 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Send, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const ContactSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
   const { toast } = useToast();
   const [formData, setFormData] = useState({ name: "", phone: "", message: "", requirement: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Enquiry Sent!",
-      description: "We'll get back to you shortly. Thank you for contacting MI Enterprises.",
-    });
-    setFormData({ name: "", phone: "", message: "", requirement: "" });
+    setIsSubmitting(true);
+    try {
+      const { error } = await supabase.from("enquiries").insert({
+        name: formData.name.trim(),
+        phone: formData.phone.trim(),
+        requirement: formData.requirement.trim() || null,
+        message: formData.message.trim() || null,
+      });
+      if (error) throw error;
+      toast({
+        title: "Enquiry Sent!",
+        description: "We'll get back to you shortly. Thank you for contacting MI Enterprises.",
+      });
+      setFormData({ name: "", phone: "", message: "", requirement: "" });
+    } catch {
+      toast({
+        title: "Something went wrong",
+        description: "Please try again or contact us directly by phone.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -154,9 +174,9 @@ const ContactSection = () => {
                   className="text-base sm:text-sm"
                 />
               </div>
-              <Button type="submit" size="lg" className="w-full font-heading tracking-wide text-base sm:text-lg py-5 sm:py-6 active:scale-[0.98] transition-transform">
-                <Send className="w-5 h-5 mr-2" />
-                Send Enquiry
+              <Button type="submit" size="lg" disabled={isSubmitting} className="w-full font-heading tracking-wide text-base sm:text-lg py-5 sm:py-6 active:scale-[0.98] transition-transform">
+                {isSubmitting ? <Loader2 className="w-5 h-5 mr-2 animate-spin" /> : <Send className="w-5 h-5 mr-2" />}
+                {isSubmitting ? "Sending..." : "Send Enquiry"}
               </Button>
             </form>
           </motion.div>
