@@ -90,14 +90,14 @@ const ContactSection = () => {
                 </div>
               </div>
 
-              <a href="tel:+919889603560" className="flex gap-3 sm:gap-4 items-start active:bg-secondary/40 -mx-2 px-2 py-1.5 rounded-lg transition-colors">
+              <a href="tel:+918699960356" className="flex gap-3 sm:gap-4 items-start active:bg-secondary/40 -mx-2 px-2 py-1.5 rounded-lg transition-colors">
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
                   <Phone className="w-5 h-5 text-primary" />
                 </div>
                 <div>
                   <p className="font-medium text-sm sm:text-base mb-1">Phone</p>
                   <p className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors">
-                    +91 9889-60356
+                    +91 86999-60356
                   </p>
                   <p className="text-[10px] sm:text-xs text-muted-foreground mt-0.5">Contact: Manpreet Singh Ubhi</p>
                 </div>
