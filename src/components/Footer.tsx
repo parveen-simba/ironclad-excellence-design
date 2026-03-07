@@ -56,9 +56,9 @@ const Footer = () => {
                 <MapPin className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
                 <span>Gill Road, Ludhiana, Punjab, India</span>
               </div>
-              <a href="tel:+919889603560" className="flex gap-2 text-xs sm:text-sm text-muted-foreground hover:text-primary active:text-primary transition-colors">
+              <a href="tel:+918699960356" className="flex gap-2 text-xs sm:text-sm text-muted-foreground hover:text-primary active:text-primary transition-colors">
                 <Phone className="w-4 h-4 text-primary flex-shrink-0" />
-                +91 9889-60356
+                +91 86999-60356
               </a>
               <a href="mailto:mienterprises1984@gmail.com" className="flex gap-2 text-xs sm:text-sm text-muted-foreground hover:text-primary active:text-primary transition-colors break-all">
                 <Mail className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
