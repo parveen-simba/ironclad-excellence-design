@@ -174,9 +174,9 @@ const ContactSection = () => {
                   className="text-base sm:text-sm"
                 />
               </div>
-              <Button type="submit" size="lg" className="w-full font-heading tracking-wide text-base sm:text-lg py-5 sm:py-6 active:scale-[0.98] transition-transform">
-                <Send className="w-5 h-5 mr-2" />
-                Send Enquiry
+              <Button type="submit" size="lg" disabled={isSubmitting} className="w-full font-heading tracking-wide text-base sm:text-lg py-5 sm:py-6 active:scale-[0.98] transition-transform">
+                {isSubmitting ? <Loader2 className="w-5 h-5 mr-2 animate-spin" /> : <Send className="w-5 h-5 mr-2" />}
+                {isSubmitting ? "Sending..." : "Send Enquiry"}
               </Button>
             </form>
           </motion.div>
