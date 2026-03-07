@@ -56,9 +56,9 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center gap-2 sm:gap-3">
-            <a href="tel:+919889603560" className="hidden md:flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
+            <a href="tel:+918699960356" className="hidden md:flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
               <Phone className="w-4 h-4" />
-              +91 9889-60356
+              +91 86999-60356
             </a>
             <a href="#contact" className="hidden sm:block">
               <Button className="font-heading tracking-wide text-sm px-4 py-2">
@@ -100,9 +100,9 @@ const Navbar = () => {
                 </motion.a>
               ))}
               <div className="pt-2 pb-1 space-y-3">
-                <a href="tel:+919889603560" onClick={() => setIsOpen(false)} className="flex items-center gap-2 py-3 px-3 text-sm text-muted-foreground hover:text-primary active:bg-secondary/60 rounded-lg transition-colors">
+                <a href="tel:+918699960356" onClick={() => setIsOpen(false)} className="flex items-center gap-2 py-3 px-3 text-sm text-muted-foreground hover:text-primary active:bg-secondary/60 rounded-lg transition-colors">
                   <Phone className="w-4 h-4" />
-                  +91 9889-60356
+                  +91 86999-60356
                 </a>
                 <a href="#contact" onClick={() => setIsOpen(false)}>
                   <Button className="w-full font-heading tracking-wide text-base py-6">Get a Custom Order</Button>
