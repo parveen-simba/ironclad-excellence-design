@@ -8,6 +8,7 @@ import GallerySection from "@/components/GallerySection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import AIChatWidget from "@/components/AIChatWidget";
 
 const Index = () => {
   return (
@@ -22,6 +23,7 @@ const Index = () => {
       <ContactSection />
       <Footer />
       <WhatsAppButton />
+      <AIChatWidget />
     </div>
   );
 };
