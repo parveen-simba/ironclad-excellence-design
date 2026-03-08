@@ -2,3 +2,6 @@ project_id = "tihflhochdniozsjhydu"
 
 [functions.admin-enquiries]
 verify_jwt = false
+
+[functions.chat]
+verify_jwt = false
